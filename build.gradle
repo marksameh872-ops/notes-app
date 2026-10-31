@@ -1,0 +1,43 @@
+plugins {
+    id 'com.android.application' version '8.4.2'
+    id 'org.jetbrains.kotlin.android' version '1.9.23'
+}
+
+android {
+    namespace 'com.notes.premium'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.notes.premium"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    // Flat project: every source file lives directly at the repo root.
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+            java.srcDirs = ['.']
+            java.exclude 'build/**'
+            java.exclude '.gradle/**'
+            java.exclude '.github/**'
+        }
+    }
+}
